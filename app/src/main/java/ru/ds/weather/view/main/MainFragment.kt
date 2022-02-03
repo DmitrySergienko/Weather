@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentMainBinding
+import ru.ds.weather.model.Weather
+import ru.ds.weather.view.details.DetailsFragment
 import ru.ds.weather.viewmodel.AppState
 import ru.ds.weather.viewmodel.MainViewModel
 
@@ -19,7 +21,19 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
-    private val adapter = MainFragmentAdapter()
+    private val adapter = MainFragmentAdapter(object : OnItemViewClickListener {
+        override fun onItemViewClick(weather: Weather) {
+            val manager = activity?.supportFragmentManager
+            if (manager != null) {
+                val bundle = Bundle()
+                bundle.putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
+                manager.beginTransaction()
+                    .add(R.id.container, DetailsFragment.newInstance(bundle))
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+            }
+        }
+    })
     private var isDataSetRus: Boolean = true
 
     override fun onCreateView(
@@ -42,10 +56,10 @@ class MainFragment : Fragment() {
     private fun changeWeatherDataSet() {
         if (isDataSetRus) {
             viewModel.getWeatherFromLocalSourceWorld()
-            //binding.mainFragmentFAB.setImageResource(R.drawable.ic_earch)
+            //binding.mainFragmentFAB.setImageResource(R.drawable.ic_earth)
         } else {
             viewModel.getWeatherFromLocalSourceRus()
-            //binding.mainFragmentFAB.setImageResource(R.drawable.ic_rus)
+            //binding.mainFragmentFAB.setImageResource(R.drawable.ic_russia)
         }
         isDataSetRus = !isDataSetRus
     }
@@ -61,16 +75,21 @@ class MainFragment : Fragment() {
             }
             is AppState.Error -> {
                 binding.mainFragmentLoadingLayout.visibility = View.GONE
-                Snackbar
-                    .make(binding.root,"Error",Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") {viewModel.getWeatherFromLocalSourceRus()}
-                    .show()
+               //Snackbar
+               //    .make(binding.mainFragmentFAB, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
+               //    .setAction(getString(R.string.reload)) { viewModel.getWeatherFromLocalSourceRus() }
+               //    .show()
             }
         }
+    }
+
+    interface OnItemViewClickListener {
+        fun onItemViewClick(weather: Weather)
     }
 
     companion object {
         fun newInstance() =
             MainFragment()
     }
+
 }

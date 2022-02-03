@@ -10,7 +10,7 @@ import ru.ds.weather.R
 import ru.ds.weather.model.Weather
 
 //Метод передачи массива с данными для отображения и обработка нажатия на элемент списка
-class MainFragmentAdapter :
+class MainFragmentAdapter(private var onItemViewClickListener: MainFragment.OnItemViewClickListener?) :
     RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {
 
     private var weatherData: List<Weather> = listOf()
@@ -43,11 +43,7 @@ class MainFragmentAdapter :
         fun bind(weather: Weather) {
             itemView.findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text = weather.city.city
             itemView.setOnClickListener {
-                Toast.makeText(
-                    itemView.context,
-                    weather.city.city,
-                    Toast.LENGTH_LONG
-                ).show()
+                onItemViewClickListener?.onItemViewClick(weather)
             }
         }
     }

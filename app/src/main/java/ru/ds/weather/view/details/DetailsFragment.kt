@@ -42,11 +42,15 @@ class DetailsFragment : Fragment() {
     companion object {
 
         const val BUNDLE_EXTRA = "weather"
-
+            //в этот метод передаётся бандл с данными о городе
         fun newInstance(bundle: Bundle): DetailsFragment {
             val fragment = DetailsFragment()
             fragment.arguments = bundle
             return fragment
         }
+    }
+//interface для передачи данных между адаптером списка и фрагментом
+    interface OnItemViewClickListener {
+        fun onItemViewClick(weather: Weather)
     }
 }
