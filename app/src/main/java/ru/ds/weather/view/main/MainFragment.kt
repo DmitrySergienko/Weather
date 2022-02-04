@@ -63,6 +63,7 @@ class MainFragment : Fragment() {
         } else {
             viewModel.getWeatherFromLocalSourceRus()
             mainFragmentFAB.setImageResource(R.drawable.ic_rus)
+
         }.also { isDataSetRus = !isDataSetRus }
 
 
