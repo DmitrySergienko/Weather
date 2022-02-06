@@ -43,11 +43,7 @@ class DetailsFragment : Fragment() {
             }
 
             override fun onFailed(throwable: Throwable) {
-
-                mainFragmentRootView.showSnackBar(
-                    "error",
-                    "reloading",
-                    {})
+                Toast.makeText(requireContext(),"Файлы не загруженны с сети", Toast.LENGTH_SHORT).show()
 
             }
         }
