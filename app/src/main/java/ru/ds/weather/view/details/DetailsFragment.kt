@@ -43,11 +43,7 @@ class DetailsFragment : Fragment() {
             }
 
             override fun onFailed(throwable: Throwable) {
-
-                mainFragmentRootView.showSnackBar(
-                    "error",
-                    "reloading",
-                    {})
+                Toast.makeText(requireContext(),"НЕ ВЫВОДИТ ЭТОТ ТЕКСТ", Toast.LENGTH_SHORT).show()
 
             }
         }
