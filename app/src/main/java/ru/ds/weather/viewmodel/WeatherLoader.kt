@@ -3,6 +3,7 @@ package ru.ds.weather.viewmodel
 import android.os.Build
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import ru.ds.weather.BuildConfig
@@ -16,15 +17,18 @@ import javax.net.ssl.HttpsURLConnection
 
 //класс, отвечающий за загрузку данных, и callback-уведомление о событиях загрузки.
 
-private const val WEATHER_APP_KEY = "b118d620-5230-44a3-b29d-2d28e445565f"
+
 @RequiresApi(Build.VERSION_CODES.N)
-class WeatherLoader(private val listener: WeatherLoaderListener, private val lat: Double, private val lon: Double) {
+class WeatherLoader(
+        private val listener: WeatherLoaderListener,
+        private val lat: Double,
+        private val lon: Double) {
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun loadWeather() {
         try {
             val uri =
-                URL("https://api.weather.yandex.ru/v2/informers?lat=${lat}&lon=${lon}")
+                    URL("https://api.weather.yandex.ru/v2/informers?lat=${lat}&lon=${lon}")
             val handler = Handler()
             Thread(Runnable {
                 lateinit var urlConnection: HttpsURLConnection
@@ -32,16 +36,16 @@ class WeatherLoader(private val listener: WeatherLoaderListener, private val lat
                     urlConnection = uri.openConnection() as HttpsURLConnection
                     urlConnection.requestMethod = "GET"
                     urlConnection.addRequestProperty(
-                        "X-Yandex-API-Key",
-                        WEATHER_APP_KEY
+                            "X-Yandex-API-Key",
+                            BuildConfig.WEATHER_API_KEY
                     )
                     urlConnection.readTimeout = 10000
                     val bufferedReader =
-                        BufferedReader(InputStreamReader(urlConnection.inputStream))
+                            BufferedReader(InputStreamReader(urlConnection.inputStream))
 
                     // преобразование ответа от сервера (JSON) в модель данных (WeatherDTO)
                     val weatherDTO: WeatherDTO =
-                        Gson().fromJson(getLines(bufferedReader), WeatherDTO::class.java)
+                            Gson().fromJson(getLines(bufferedReader), WeatherDTO::class.java)
                     handler.post { listener.onLoaded(weatherDTO) }
                 } catch (e: Exception) {
                     Log.e("", "Fail connection", e)
@@ -56,6 +60,7 @@ class WeatherLoader(private val listener: WeatherLoaderListener, private val lat
             e.printStackTrace()
             listener.onFailed(e)
         }
+
     }
 
 

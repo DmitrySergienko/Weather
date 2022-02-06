@@ -1,5 +1,6 @@
 package ru.ds.weather.view.details
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -8,13 +9,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentDetailsBinding
 import ru.ds.weather.model.Weather
 import ru.ds.weather.model.WeatherDTO
+import ru.ds.weather.showSnackBar
 import ru.ds.weather.viewmodel.WeatherLoader
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -38,7 +43,12 @@ class DetailsFragment : Fragment() {
             }
 
             override fun onFailed(throwable: Throwable) {
-                //Обработка ошибки
+
+                mainFragmentRootView.showSnackBar(
+                    "error",
+                    "reloading",
+                    {})
+
             }
         }
 
