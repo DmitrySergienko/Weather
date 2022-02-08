@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-        // showMainFragment()
-        showFragment(ThreadsFragment.newInstance())
+         showMainFragment()
+        //showFragment(ThreadsFragment.newInstance())
         }
 
     }

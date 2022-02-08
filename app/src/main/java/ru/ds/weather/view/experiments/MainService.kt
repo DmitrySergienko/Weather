@@ -26,7 +26,8 @@ class MainService : IntentService("MainService") {
     private fun sendBack(result: String) {
         val broadcastIntent = Intent(TEST_BROADCAST_INTENT_FILTER)
         broadcastIntent.putExtra(THREADS_FRAGMENT_BROADCAST_EXTRA, result)
-        LocalBroadcastManager.getInstance(this).sendBroadcast(broadcastIntent)
+        sendBroadcast(broadcastIntent)
+
 
     }
 
