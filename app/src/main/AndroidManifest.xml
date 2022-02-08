@@ -21,7 +21,7 @@
 
         <receiver android:name=".view.experiments.MainBroadcastReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.CONNECTIVITY_ACTION" />
             </intent-filter>
         </receiver>
 
