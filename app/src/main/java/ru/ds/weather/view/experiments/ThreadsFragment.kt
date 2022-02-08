@@ -1,17 +1,26 @@
 package ru.ds.weather.view.experiments
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import kotlinx.android.synthetic.main.fragment_threads.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentThreadsBinding
 import java.util.Date
 import java.util.concurrent.TimeUnit
+
+const val TEST_BROADCAST_INTENT_FILTER = "TEST BROADCAST INTENT FILTER"
+const val THREADS_FRAGMENT_BROADCAST_EXTRA = "THREADS_FRAGMENT_EXTRA"
 
 class ThreadsFragment : Fragment() {
 
@@ -27,10 +36,32 @@ class ThreadsFragment : Fragment() {
         return binding.root
     }
 
+    private fun initServiceWithBroadcastButton() {
+        binding.serviceWithBroadcastButton.setOnClickListener {
+            context?.let {
+                it.startService(Intent(it, MainService::class.java).apply {
+                    putExtra(
+                        MAIN_SERVICE_INT_EXTRA,
+                        binding.editText.text.toString().toInt()
+                    )
+                    putExtra(
+                        MAIN_SERVICE_STRING_EXTRA,
+                        getString(R.string.hello_from_thread_fragment)
+                    )
+                })
+            }
+        }
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//это кнопочка для запучка Service
+        initServiceButton()
 
+//эта кнопка (метод) для запучка Broadcast
+        initServiceWithBroadcastButton()
 
         binding.button.setOnClickListener {
             binding.textView.text = startCalculations(binding.editText.text.toString().toInt())
@@ -83,6 +114,20 @@ class ThreadsFragment : Fragment() {
 
     }
 
+    private fun initServiceButton() {
+        binding.serviceButton.setOnClickListener {
+            context?.let {
+                it.startService(Intent(it, MainService::class.java).apply {
+                    putExtra(
+                        MAIN_SERVICE_STRING_EXTRA,
+                        getString(R.string.hello_from_thread_fragment)
+                    )
+                })
+            }
+        }
+    }
+
+
     private fun startCalculations(seconds: Int): String {
         val date = Date()
         var diffInSec: Long
@@ -110,4 +155,36 @@ class ThreadsFragment : Fragment() {
             }
         }
     }
+
+    //Создаём свой BroadcastReceiver (получатель широковещательного сообщения)
+    private val testReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            //Достаём данные из интента
+            intent.getStringExtra(THREADS_FRAGMENT_BROADCAST_EXTRA)?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+    //тут регистрируем broadcast ресиваер
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //ели отсылать Broadcast наружу
+        //context?.registerReceiver(testReceiver, IntentFilter(TEST_BROADCAST_INTENT_FILTER))
+        //если использовать внутриприложения
+        context?.let {LocalBroadcastManager.getInstance(it)
+            .registerReceiver(testReceiver, IntentFilter(TEST_BROADCAST_INTENT_FILTER)) }
+
+
+
+    }
+    override fun onDestroy() {
+        context?.let {
+            LocalBroadcastManager.getInstance(it).unregisterReceiver(testReceiver)
+        }
+        super.onDestroy()
+
+        //context?.unregisterReceiver(testReceiver)
+    }
+
+
 }
