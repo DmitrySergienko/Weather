@@ -19,7 +19,7 @@ import ru.ds.weather.view.details.DetailsFragment
 import ru.ds.weather.viewmodel.AppState
 import ru.ds.weather.viewmodel.MainViewModel
 
-class MainFragment : Fragment() {
+class   MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
