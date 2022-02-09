@@ -129,6 +129,7 @@ class DetailsFragment : Fragment() {
     private fun getWeather() {
         binding.mainView.visibility = View.GONE
         binding.loadingLayout.visibility = View.VISIBLE
+
         context?.let {
             it.startService(Intent(it, DetailsService::class.java).apply {
                 putExtra(
