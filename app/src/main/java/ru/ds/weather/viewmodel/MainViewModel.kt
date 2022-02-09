@@ -2,9 +2,9 @@ package ru.ds.weather.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.ds.weather.viewmodel.AppState
-import ru.ds.weather.model.Repository
-import ru.ds.weather.model.RepositoryImpl
+import ru.ds.weather.model.AppState
+import ru.ds.weather.repository.Repository
+import ru.ds.weather.repository.RepositoryImpl
 import java.lang.Thread.sleep
 
 

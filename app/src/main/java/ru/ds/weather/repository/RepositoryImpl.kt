@@ -1,4 +1,8 @@
-package ru.ds.weather.model
+package ru.ds.weather.repository
+
+import ru.ds.weather.model.Weather
+import ru.ds.weather.model.getRussianCities
+import ru.ds.weather.model.getWorldCities
 
 class RepositoryImpl : Repository {
 

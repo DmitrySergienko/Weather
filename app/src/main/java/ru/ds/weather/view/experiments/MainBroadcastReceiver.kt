@@ -1,5 +1,5 @@
 package ru.ds.weather.view.experiments
-
+/*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -19,3 +19,5 @@ class MainBroadcastReceiver : BroadcastReceiver() {
         }
     }
 }
+
+ */

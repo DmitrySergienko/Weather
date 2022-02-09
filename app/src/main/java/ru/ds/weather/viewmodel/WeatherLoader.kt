@@ -1,5 +1,5 @@
 package ru.ds.weather.viewmodel
-
+/*
 import android.os.Build
 import android.os.Handler
 import android.util.Log
@@ -74,3 +74,4 @@ class WeatherLoader(
         fun onFailed(throwable: Throwable)
     }
 }
+*/

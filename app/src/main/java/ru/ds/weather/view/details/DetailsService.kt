@@ -1,5 +1,5 @@
 package ru.ds.weather.view.details
-
+/*
 import android.app.IntentService
 import android.content.Intent
 import android.content.Context
@@ -128,3 +128,4 @@ class DetailsService(name: String = "DetailService") : IntentService(name) {
 
     }
 }
+*/

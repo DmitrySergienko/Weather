@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentMainBinding
@@ -16,7 +15,7 @@ import ru.ds.weather.model.Weather
 import ru.ds.weather.myFirstSnackBar
 import ru.ds.weather.showSnackBar
 import ru.ds.weather.view.details.DetailsFragment
-import ru.ds.weather.viewmodel.AppState
+import ru.ds.weather.model.AppState
 import ru.ds.weather.viewmodel.MainViewModel
 
 class   MainFragment : Fragment() {

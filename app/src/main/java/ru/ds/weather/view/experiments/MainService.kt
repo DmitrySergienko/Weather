@@ -1,5 +1,5 @@
 package ru.ds.weather.view.experiments
-
+/*
 import android.app.IntentService
 import android.content.Intent
 import android.content.Context
@@ -53,4 +53,4 @@ class MainService : IntentService("MainService") {
     }
 
 
-}
+}*/

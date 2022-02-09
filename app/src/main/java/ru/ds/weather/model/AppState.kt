@@ -1,6 +1,4 @@
-package ru.ds.weather.viewmodel
-
-import ru.ds.weather.model.Weather
+package ru.ds.weather.model
 
 
 sealed class AppState {

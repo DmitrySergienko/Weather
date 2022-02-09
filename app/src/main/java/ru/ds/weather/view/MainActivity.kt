@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import ru.ds.weather.R
 import ru.ds.weather.databinding.MainActivityBinding
-import ru.ds.weather.view.experiments.ThreadsFragment
+
 import ru.ds.weather.view.main.MainFragment
 
 

@@ -1,4 +1,6 @@
-package ru.ds.weather.model
+package ru.ds.weather.repository
+
+import ru.ds.weather.model.Weather
 
 interface Repository {
     fun getWeatherFromServer(): Weather
