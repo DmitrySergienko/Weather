@@ -66,7 +66,7 @@ class DetailsFragment : Fragment() {
     private fun getWeather() {
         binding.mainView.visibility = View.GONE
         binding.loadingLayout.visibility = View.VISIBLE
-        viewModel.getWeatherFromRemoteSource(MAIN_LINK +"lat=${weatherBundle.city.lat}&lon=${weatherBundle.city.lon}")
+        viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat, weatherBundle.city.lon)
 
     }
 
@@ -88,7 +88,7 @@ class DetailsFragment : Fragment() {
                 binding.mainView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
-                    { viewModel.getWeatherFromRemoteSource(MAIN_LINK + "lat=${weatherBundle.city.lat}&lon=${weatherBundle.city.lon}") })
+                    {getWeather() })
             }
         }
     }
