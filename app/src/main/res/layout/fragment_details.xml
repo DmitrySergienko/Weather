@@ -16,35 +16,14 @@
             android:id="@+id/cityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="140dp"
             android:textSize="@dimen/city_name_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imPicture"
+            app:layout_constraintTop_toTopOf="@id/imPicture"
             tools:text="Москва" />
 
-        <TextView
-            android:id="@+id/cityCoordinates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_5_dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cityName"
-            tools:text="lt/ln: 55.755826, 37.617299900000035" />
-
-        <TextView
-            android:id="@+id/weatherCondition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_15_dp"
-            android:textSize="@dimen/feels_like_text_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cityCoordinates"
-            tools:text="Облачно" />
 
         <TextView
             android:id="@+id/temperatureLabel"
@@ -99,6 +78,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cityCoordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityName"
+            tools:text="lt/ln: 55.755826, 37.617299900000035" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weatherIcon"
+            android:layout_width="@dimen/weather_icon_width"
+            android:layout_height="@dimen/weather_icon_height"
+            android:layout_marginTop="@dimen/margin_15_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityCoordinates" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weatherCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherIcon"
+            tools:text="Облачно" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

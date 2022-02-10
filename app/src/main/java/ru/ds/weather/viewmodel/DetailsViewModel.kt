@@ -57,9 +57,9 @@ class DetailsViewModel(
     }
 
         //Метод convertDtoToModel занимается преобразованием нашего Data transfer object в понятный для AppState формат:
-        private fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
+        fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
             val fact: FactDTO = weatherDTO.fact!!
-            return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!, fact.condition!!))
+            return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!, fact.condition!!, fact.icon))
         }
 
 }

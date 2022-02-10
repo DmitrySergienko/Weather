@@ -1,5 +1,6 @@
 package ru.ds.weather.view.details
 
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import kotlinx.android.synthetic.main.fragment_details.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentDetailsBinding
 import ru.ds.weather.model.Weather
@@ -94,8 +97,15 @@ class DetailsFragment : Fragment() {
     Glide.with(requireContext())
         .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
         .into(binding.imPicture)
-
+    weather.icon?.let {
+        GlideToVectorYou.justLoadImage(
+            activity,
+            Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
+            weatherIcon
+        )
     }
+}
+
 
     companion object {
         const val BUNDLE_EXTRA = "weather"
