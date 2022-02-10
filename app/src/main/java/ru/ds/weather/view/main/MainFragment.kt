@@ -1,5 +1,6 @@
 package ru.ds.weather.view.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,8 @@ import ru.ds.weather.myFirstSnackBar
 import ru.ds.weather.showSnackBar
 import ru.ds.weather.view.details.DetailsFragment
 import ru.ds.weather.model.AppState
+import ru.ds.weather.utils.Constants
+import ru.ds.weather.utils.Constants.IS_WORLD_KEY
 import ru.ds.weather.viewmodel.MainViewModel
 
 class   MainFragment : Fragment() {
@@ -50,18 +53,42 @@ class   MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.mainFragmentRecyclerView.adapter = adapter
-        binding.mainFragmentFAB.setOnClickListener { changeWeatherDataSet() }
+        binding.mainFragmentFAB.setOnClickListener {
+            onChangeTowns() }
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getWeatherFromLocalSourceRus()
+
+
+        showListOfTowns()
     }
+    private fun onChangeTowns(){
+        changeWeatherDataSet()
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)    //получаем экземпляр preference
+        val editor = sharedPref?.edit()
+        editor?.putBoolean(Constants.IS_WORLD_KEY,!isDataSetRus)
+        editor?.apply()
+
+
+    }
+
+    //______________________
+    private fun showListOfTowns() {
+        activity?.let {
+            if (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_WORLD_KEY, false)) {
+                changeWeatherDataSet()
+            } else {
+                viewModel.getWeatherFromLocalSourceRus()
+            }
+        }
+    }
+
 
     private fun changeWeatherDataSet() =
         if (isDataSetRus) {
             viewModel.getWeatherFromLocalSourceWorld()
-            mainFragmentFAB.setImageResource(R.drawable.ic_earch)
+            mainFragmentFAB.setImageResource(R.drawable.ic_world)
         } else {
             viewModel.getWeatherFromLocalSourceRus()
-            mainFragmentFAB.setImageResource(R.drawable.ic_rus)
+            mainFragmentFAB.setImageResource(R.drawable.ic_russ)
 
         }.also { isDataSetRus = !isDataSetRus }
 
