@@ -95,7 +95,7 @@ class DetailsFragment : Fragment() {
 //picture upload through Glide library
 
     Glide.with(requireContext())
-        .load("https://freepngimg.com/thumb/city/78415-city-hong-wallpaper-bright-kong-lights-skyline.png")
+        .load("https://freepngimg.com/thumb/city/86758-building-city-2d-game-computer-video-graphics.png")
         .into(binding.imPicture)
     weather.icon?.let {
         GlideToVectorYou.justLoadImage(
