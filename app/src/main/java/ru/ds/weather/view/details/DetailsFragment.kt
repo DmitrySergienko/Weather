@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentDetailsBinding
 import ru.ds.weather.model.Weather
@@ -75,7 +76,7 @@ class DetailsFragment : Fragment() {
             }
         }
     }
-//setWeather отображает данные
+//setWeather отображает данные в фрагменте
     private fun setWeather(weather: Weather) {
         val city = weatherBundle.city
         binding.cityName.text = city.city
@@ -87,6 +88,13 @@ class DetailsFragment : Fragment() {
         binding.temperatureValue.text = weather.temperature.toString()
         binding.feelsLikeValue.text = weather.feelsLike.toString()
         binding.weatherCondition.text = weather.condition
+
+//picture upload through Glide library
+
+    Glide.with(requireContext())
+        .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+        .into(binding.imPicture)
+
     }
 
     companion object {
