@@ -18,5 +18,6 @@
     <string name="service_broadcast">Service + Broadcast</string>
     <string name="error">error</string>
     <string name="reload">reload</string>
+    <string name="menu_title_history">history</string>
 
 </resources>

@@ -18,6 +18,7 @@ import ru.ds.weather.databinding.FragmentDetailsBinding
 import ru.ds.weather.model.Weather
 import ru.ds.weather.showSnackBar
 import ru.ds.weather.model.AppState
+import ru.ds.weather.model.City
 import ru.ds.weather.viewmodel.DetailsViewModel
 
 
@@ -81,6 +82,7 @@ class DetailsFragment : Fragment() {
     }
 //setWeather отображает данные в фрагменте
     private fun setWeather(weather: Weather) {
+
         val city = weatherBundle.city
         binding.cityName.text = city.city
         binding.cityCoordinates.text = String.format(
@@ -104,7 +106,24 @@ class DetailsFragment : Fragment() {
             weatherIcon
         )
     }
+    //вызфываем меирд для сохранения истории запроссов погоды
+    saveCity(weatherBundle.city,weather)
+
 }
+
+    private fun saveCity(
+        city: City,
+        weather: Weather
+    ) {
+        viewModel.saveCityToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
+    }
 
 
     companion object {

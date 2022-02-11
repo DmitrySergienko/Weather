@@ -8,9 +8,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 import ru.ds.weather.model.*
-import ru.ds.weather.repository.DetailsRepository
-import ru.ds.weather.repository.DetailsRepositoryImpl
-import ru.ds.weather.repository.RemoteDataSource
+import ru.ds.weather.model.db.App
+import ru.ds.weather.repository.*
+import ru.ds.weather.utils.convertDtoToModel
 
 private const val SERVER_ERROR = "Ошибка сервера"
 private const val REQUEST_ERROR = "Ошибка запроса на сервер"
@@ -21,7 +21,13 @@ class DetailsViewModel(
     private val detailsRepositoryImpl: DetailsRepository = DetailsRepositoryImpl(RemoteDataSource())
 ) : ViewModel() {
 
+    private val historyRepository: LocalRepository = LocalRepositoryImpl(App.getHistoryDao())
     val detailsLiveData: LiveData<AppState> get() = mutableDetailsLiveData
+//функция для сохранения данных а ДБ
+    fun saveCityToDB(weather: Weather) {
+        historyRepository.saveEntity(weather)
+    }
+
 
     fun getWeatherFromRemoteSource(lat: Double, lon: Double) {
         mutableDetailsLiveData.value = AppState.Loading
@@ -55,11 +61,4 @@ class DetailsViewModel(
             }
         }
     }
-
-        //Метод convertDtoToModel занимается преобразованием нашего Data transfer object в понятный для AppState формат:
-        fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
-            val fact: FactDTO = weatherDTO.fact!!
-            return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!, fact.condition!!, fact.icon))
-        }
-
 }
