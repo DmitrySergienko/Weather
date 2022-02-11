@@ -57,6 +57,7 @@ class HistoryFragment : Fragment() {
                     {
                         viewModel.getAllHistory()
                     })
+
             }
         }
     }
