@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import ru.ds.weather.view.main.HistoryFragment
 import ru.ds.weather.R
 import ru.ds.weather.databinding.MainActivityBinding
+import ru.ds.weather.experiment.ContactFragment
 
 import ru.ds.weather.view.main.MainFragment
 
@@ -53,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menu_history -> {
                 showFragmentWithBackStack(HistoryFragment.newInstance())
+                true
+            }
+            R.id.menu_contacts ->{
+                showFragmentWithBackStack(ContactFragment.newInstance())
                 true
             }
             else -> super.onOptionsItemSelected(item)
