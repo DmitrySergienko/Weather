@@ -91,6 +91,7 @@ class TestProvider : ContentProvider() {
         // Нотификация на изменение Cursor
         context?.contentResolver?.notifyChange(uri, null)
         return 1
+
     }
 
 
