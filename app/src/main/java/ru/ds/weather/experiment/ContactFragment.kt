@@ -1,14 +1,20 @@
 package ru.ds.weather.experiment
 
 import android.Manifest
+import android.content.ContentResolver
+import android.content.Context
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentContactsBinding
 
 const val REQUEST_CODE = 42
@@ -91,8 +97,39 @@ class ContactFragment : Fragment() {
             }
         }
     }
-
+//Content provider
     private fun getContacts() {
+        context?.let {
+            // Получаем ContentResolver у контекста
+            val contentResolver: ContentResolver = it.contentResolver
+            // Отправляем запрос на получение контактов и получаем ответ в виде Cursor
+            val cursorWithContacts: Cursor? = contentResolver.query(
+                    ContactsContract.Contacts.CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+            )
+
+            cursorWithContacts?.let { cursor ->
+                for (i in 0..cursor.count) {
+                    // Переходим на позицию в Cursor
+                    if (cursor.moveToPosition(i)) {
+                        // Берём из Cursor столбец с именем
+                        val name =
+                                cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                        addView(it, name)
+                    }
+                }
+            }
+            cursorWithContacts?.close()
+        }
+    }
+    private fun addView(context: Context, textToShow: String) {
+        binding.containerForContacts.addView(AppCompatTextView(context).apply {
+            text = textToShow
+            textSize = resources.getDimension(R.dimen.main_container_text_size)
+        })
     }
 
 
