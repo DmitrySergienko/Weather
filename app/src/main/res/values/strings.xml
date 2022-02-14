@@ -20,5 +20,6 @@
     <string name="reload">reload</string>
     <string name="menu_title_history">history</string>
     <string name="content_provider">Contacts</string>
+    <string name="authorities">weather.provider</string>
 
 </resources>

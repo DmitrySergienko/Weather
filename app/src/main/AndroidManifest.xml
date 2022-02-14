@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
     <application
         android:name=".model.db.App"
         android:allowBackup="true"
@@ -14,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Weather">
-
+        <provider
+            android:name=".providers.TestProvider"
+            android:authorities="@string/authorities"
+            android:enabled="true"
+            android:exported="true"/>
 
         <activity android:name=".view.MainActivity">
             <intent-filter>

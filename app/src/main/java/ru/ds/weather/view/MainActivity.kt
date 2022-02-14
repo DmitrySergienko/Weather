@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (savedInstanceState == null) {
          showMainFragment()
-        //showFragment(ThreadsFragment.newInstance())
+             //showFragment(ThreadsFragment.newInstance())
         }
 
     }
