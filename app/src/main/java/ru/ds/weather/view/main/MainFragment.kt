@@ -44,14 +44,7 @@ class   MainFragment : Fragment() {
 
     private val adapter = MainFragmentAdapter(object : OnItemViewClickListener {
         override fun onItemViewClick(weather: Weather) {
-            activity?.supportFragmentManager?.apply {
-                beginTransaction()
-                    .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
-                        putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
-                    }))
-                    .addToBackStack("")
-                    .commitAllowingStateLoss()
-            }
+            openDetailsFragment(weather)
         }
     })
 
@@ -255,9 +248,22 @@ class   MainFragment : Fragment() {
         }
     }
 
-    private fun openDetailsFragment(weather: Weather) {
-
+    private fun openDetailsFragment(
+        weather: Weather
+    ) {
+        activity?.supportFragmentManager?.apply {
+            beginTransaction()
+                .add(
+                    R.id.container,
+                    DetailsFragment.newInstance(Bundle().apply {
+                        putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
+                    })
+                )
+                .addToBackStack("")
+                .commitAllowingStateLoss()
+        }
     }
+
 
 
     override fun onRequestPermissionsResult(
