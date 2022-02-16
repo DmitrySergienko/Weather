@@ -69,7 +69,7 @@ class GoogleMapsFragment : Fragment() {
     private fun setMarker(
         location: LatLng,
         searchText: String
-    ): Marker {
+    ): Marker? {
         return map.addMarker(
             MarkerOptions()
                 .position(location)
