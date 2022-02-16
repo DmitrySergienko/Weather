@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+
         }
     }
 }
