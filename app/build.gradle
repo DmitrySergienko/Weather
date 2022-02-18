@@ -48,6 +48,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+    flavorDimensions 'commercial version'
+    productFlavors {
+        freeConfiguration {
+            dimension 'commercial version'
+            versionNameSuffix '.free'
+        }
+        paidConfiguration {
+            dimension 'commercial version'
+            versionNameSuffix '.paid'
+        }
+
+    }
 }
 
 
