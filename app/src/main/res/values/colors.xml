@@ -14,6 +14,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="detailsFragment">#DCF0F3</color>
     <color name="button">#FF9800</color>
+    <color name="testTint">#7FCECB</color>
+    <color name="colorBlue">#3269F3</color>
 
 
 </resources>
