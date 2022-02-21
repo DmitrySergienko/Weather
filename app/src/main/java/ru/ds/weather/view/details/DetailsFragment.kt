@@ -87,25 +87,6 @@ class DetailsFragment : Fragment() {
         context?.registerReceiver(loadResultsReceiver, IntentFilter(DETAILS_INTENT_FILTER))
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        context?.unregisterReceiver(loadResultsReceiver)
-    }
-
-//    private val onLoadListener: WeatherLoader.WeatherLoaderListener =
-//        object : WeatherLoader.WeatherLoaderListener {
-//
-//            override fun onLoaded(weatherDTO: WeatherDTO) {
-//                displayWeather(weatherDTO)
-//            }
-//
-//            override fun onFailed(throwable: Throwable) {
-//                Toast.makeText(requireContext(),"НЕ ВЫВОДИТ ЭТОТ ТЕКСТ", Toast.LENGTH_SHORT).show()
-//
-//            }
-//        }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
