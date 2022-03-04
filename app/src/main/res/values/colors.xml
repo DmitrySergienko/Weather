@@ -17,5 +17,11 @@
     <color name="testTint">#7FCECB</color>
     <color name="colorBlue">#3269F3</color>
 
+    <color name="light_blue_200">#b3e5fc</color>
+    <color name="light_blue_500">#03a9f4</color>
+    <color name="light_blue_700">#0288d1</color>
+    <color name="colorPrimaryBlue">#0277bd</color>
+    <color name="colorPrimaryDarkBlue">#01579b</color>
+
 
 </resources>
