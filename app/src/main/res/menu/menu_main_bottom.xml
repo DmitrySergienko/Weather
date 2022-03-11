@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/menu_list_of_city"
-
+        android:icon="@drawable/ic_baseline_history_24"
         android:title="@string/city_list"
     />
 
     <item
         android:id="@+id/menu_history"
-
+        android:icon="@drawable/ic_baseline_history_24"
         android:title="@string/menu_title_history"
         />
     <item
         android:id="@+id/menu_google_maps"
-
+        android:icon="@drawable/ic_baseline_map_24"
         android:title="@string/maps_weather"
         />
 </menu>
