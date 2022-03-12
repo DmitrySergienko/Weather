@@ -28,12 +28,7 @@ fun getWorldCities() = listOf(
         Weather(City("Istanbul", 41.0082376, 28.97835889999999), 13, 14),
         Weather(City("Washington", 38.9071923, -77.03687070000001), 15, 16),
         Weather(City("Kyiv", 50.4501, 30.523400000000038), 17, 18),
-        Weather(City("Beijing", 39.90419989999999, 116.40739630000007), 19, 20)
-
-    )
-
-
-fun getRussianCities() = listOf(
+        Weather(City("Beijing", 39.90419989999999, 116.40739630000007), 19, 20),
         Weather(City("Moscow", 55.755826, 37.617299900000035), 1, 2),
         Weather(City("St. Petersburg", 59.9342802, 30.335098600000038), 3, 3),
         Weather(City("Novosibirsk", 55.00835259999999, 82.93573270000002), 5, 6),
@@ -45,4 +40,7 @@ fun getRussianCities() = listOf(
         Weather(City("Rostov-on-Don", 47.2357137, 39.701505), 17, 18),
         Weather(City("Ufa", 54.7387621, 55.972055400000045), 19, 20)
     )
+
+
+
 
