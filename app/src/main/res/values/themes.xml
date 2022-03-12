@@ -14,7 +14,10 @@
         <item name="textInputStyle">@font/rocknroll_one</item>
         <!-- Customize your theme here. -->
     </style>
-    
-    
+
+    //unique style for FAB
+    <style name="myFloatingActionButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">#F5F6F8</item>
+    </style>
 
 </resources>
