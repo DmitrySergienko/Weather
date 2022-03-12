@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentMainBinding
@@ -64,10 +68,10 @@ class   MainFragment : Fragment() {
             onChangeTowns() }
         binding.mainFragmentFABLocation.setOnClickListener { checkPermission() }
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-
-
+        pictureForMainFragment()
         showListOfTowns()
     }
+
 //Метод запроса разрешений геоданных
     private fun checkPermission() {
         activity?.let {
@@ -146,6 +150,12 @@ class   MainFragment : Fragment() {
                 .create()
                 .show()
         }
+    }
+
+    private fun pictureForMainFragment() {
+        Glide.with(requireContext())
+                .load("https://freepngimg.com/thumb/city/86758-building-city-2d-game-computer-video-graphics.png")
+                .into(binding.imPicture)
     }
 //Если пользователь дал разрешение, получаем местоположение:
     private fun getLocation() {
