@@ -1,5 +1,3 @@
-package ru.ds.weather.view.details
-
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -34,8 +32,8 @@ class DetailsFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -77,21 +75,21 @@ class DetailsFragment : Fragment() {
                 binding.mainView.visibility = View.VISIBLE
                 binding.loadingLayout.visibility = View.GONE
                 binding.mainView.showSnackBar(
-                    getString(R.string.error),
-                    getString(R.string.reload),
-                    {getWeather() })
+                        getString(R.string.error),
+                        getString(R.string.reload),
+                        {getWeather() })
             }
         }
     }
-//setWeather отображает данные в фрагменте
+    //setWeather отображает данные в фрагменте
     private fun setWeather(weather: Weather) {
 
         val city = weatherBundle.city
         binding.cityName.text = city.city
         binding.cityCoordinates.text = String.format(
-            getString(R.string.city_coordinates),
-            city.lat.toString(),
-            city.lon.toString()
+                getString(R.string.city_coordinates),
+                city.lat.toString(),
+                city.lon.toString()
         )
         binding.temperatureValue.text = weather.temperature.toString()
         binding.feelsLikeValue.text = weather.feelsLike.toString()
@@ -99,32 +97,32 @@ class DetailsFragment : Fragment() {
 
 //picture upload through Glide library
 
-    Glide.with(requireContext())
-        .load("https://freepngimg.com/thumb/city/86758-building-city-2d-game-computer-video-graphics.png")
-        .into(binding.imPicture)
-    weather.icon?.let {
-        GlideToVectorYou.justLoadImage(
-            activity,
-            Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
-            weatherIcon
-        )
-    }
-    //вызфываем меирд для сохранения истории запроссов погоды
-    saveCity(weatherBundle.city,weather)
+        Glide.with(requireContext())
+                .load("https://freepngimg.com/thumb/city/86758-building-city-2d-game-computer-video-graphics.png")
+                .into(binding.imPicture)
+        weather.icon?.let {
+            GlideToVectorYou.justLoadImage(
+                    activity,
+                    Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
+                    weatherIcon
+            )
+        }
+        //вызфываем меирд для сохранения истории запроссов погоды
+        saveCity(weatherBundle.city,weather)
 
-}
+    }
 
     private fun saveCity(
-        city: City,
-        weather: Weather
+            city: City,
+            weather: Weather
     ) {
         viewModel.saveCityToDB(
-            Weather(
-                city,
-                weather.temperature,
-                weather.feelsLike,
-                weather.condition
-            )
+                Weather(
+                        city,
+                        weather.temperature,
+                        weather.feelsLike,
+                        weather.condition
+                )
         )
     }
 

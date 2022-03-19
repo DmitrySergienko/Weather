@@ -27,7 +27,7 @@ import ru.ds.weather.databinding.FragmentMainBinding
 import ru.ds.weather.model.Weather
 import ru.ds.weather.myFirstSnackBar
 import ru.ds.weather.showSnackBar
-import ru.ds.weather.view.details.DetailsFragment
+
 import ru.ds.weather.model.AppState
 import ru.ds.weather.model.City
 import ru.ds.weather.utils.Constants
