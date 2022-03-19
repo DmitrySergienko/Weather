@@ -28,7 +28,10 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var weatherBundle: Weather
 
+
     private val viewModel: DetailsViewModel by lazy { ViewModelProvider(this)[DetailsViewModel::class.java] }
+    
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
