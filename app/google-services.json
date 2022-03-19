@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "210455011299",
+    "project_id": "weather-86a36",
+    "storage_bucket": "weather-86a36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210455011299:android:223ecab1ab24fb4b1d4ad6",
+        "android_client_info": {
+          "package_name": "ru.ds.weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210455011299-9dnlts95qqnjjbjt409robp6ao7fovnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKUyX2Km0k9p5oFxMGw_7I0j5y-HE4sIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210455011299-9dnlts95qqnjjbjt409robp6ao7fovnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

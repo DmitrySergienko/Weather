@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="temperature_label">Температура</string>
-    <string name="feels_like_label">Ощущается как</string>
-    <string name="city_coordinates">lt/ln: %s, %s"</string>
+    <string name="temperature_label">Temperature</string>
+    <string name="feels_like_label">Feels like</string>
+    <string name="city_coordinates">Coordinates: %s, %s"</string>
     <string name="threads">Threads</string>
     <string name="in_main_thread">В главном потоке</string>
     <string name="from_thread">Из потока %d</string>
@@ -16,5 +16,30 @@
     <string name="handler_thread">Handler_Thread</string>
     <string name="service">Service</string>
     <string name="service_broadcast">Service + Broadcast</string>
+    <string name="error">error</string>
+    <string name="reload">reload</string>
+    <string name="menu_title_history">History</string>
+    <string name="content_provider">Contacts</string>
+    <string name="authorities">weather.provider</string>
+
+    <string name="dialog_button_close">close</string>
+    <string name="dialog_title_no_gps">Access to geolocation is closed</string>
+    <string name="dialog_message_no_gps">Allow access to geolocation if you want to know the weather of the current place</string>
+    <string name="dialog_title_gps_turned_off">GPS sw off</string>
+    <string name="dialog_message_last_location_unknown">Location unknown. Turn on GPS if you want to get the weather at the current address</string>
+    <string name="dialog_message_last_known_location">The last known location is shown. Turn on GPS if you want to update your location</string>
+    <string name="dialog_rationale_title">Access to geolocation</string>
+    <string name="dialog_rationale_meaasge">Any comments</string>
+    <string name="dialog_rationale_give_access">Provide access</string>
+    <string name="dialog_rationale_decline">No need</string>
+    <string name="dialog_address_title">Your address</string>
+    <string name="dialog_address_get_weather">Get weather</string>
+    <string name="google_maps">карты</string>
+
+    <string name="default_address">Red Square, 1, Moscow</string>
+    <string name="button_search_map">Search</string>
+    <string name="marker_start">Start</string>
+    <string name="city_list">List of cities</string>
+    <string name="maps_weather">Weather on map</string>
 
 </resources>
