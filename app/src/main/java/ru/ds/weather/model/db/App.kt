@@ -1,9 +1,7 @@
 package ru.ds.weather.model.db
 
 import android.app.Application
-import android.os.Handler
 import androidx.room.Room
-import androidx.room.RoomDatabase
 
 class App : Application() {
     override fun onCreate() {

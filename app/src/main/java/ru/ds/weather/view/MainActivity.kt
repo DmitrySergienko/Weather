@@ -1,16 +1,11 @@
 package ru.ds.weather.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ru.ds.weather.view.main.HistoryFragment
 import ru.ds.weather.R
 import ru.ds.weather.databinding.MainActivityBinding
-import ru.ds.weather.experiment.ContactFragment
-import ru.ds.weather.view.maps.GoogleMapsFragment
-
 import ru.ds.weather.view.main.MainFragment
 
 

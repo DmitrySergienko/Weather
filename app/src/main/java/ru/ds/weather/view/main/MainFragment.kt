@@ -1,5 +1,6 @@
 package ru.ds.weather.view.main
 
+import DetailsFragment
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
@@ -8,7 +9,6 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,17 +19,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentMainBinding
+import ru.ds.weather.model.AppState
+import ru.ds.weather.model.City
 import ru.ds.weather.model.Weather
 import ru.ds.weather.myFirstSnackBar
 import ru.ds.weather.showSnackBar
-
-import ru.ds.weather.model.AppState
-import ru.ds.weather.model.City
 import ru.ds.weather.utils.Constants
 import ru.ds.weather.utils.Constants.IS_WORLD_KEY
 import ru.ds.weather.viewmodel.MainViewModel

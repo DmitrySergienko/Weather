@@ -5,22 +5,22 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.ds.weather.R
-import ru.ds.weather.databinding.FragmentHistoryBinding
 import ru.ds.weather.databinding.FragmentSearchBinding
 import java.io.IOException
 

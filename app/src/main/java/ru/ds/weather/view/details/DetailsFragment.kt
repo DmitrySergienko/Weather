@@ -13,10 +13,10 @@ import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import kotlinx.android.synthetic.main.fragment_details.*
 import ru.ds.weather.R
 import ru.ds.weather.databinding.FragmentDetailsBinding
-import ru.ds.weather.model.Weather
-import ru.ds.weather.showSnackBar
 import ru.ds.weather.model.AppState
 import ru.ds.weather.model.City
+import ru.ds.weather.model.Weather
+import ru.ds.weather.showSnackBar
 import ru.ds.weather.viewmodel.DetailsViewModel
 
 

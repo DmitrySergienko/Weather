@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-import ru.ds.weather.model.*
+import ru.ds.weather.model.AppState
+import ru.ds.weather.model.Weather
+import ru.ds.weather.model.WeatherDTO
 import ru.ds.weather.model.db.App
 import ru.ds.weather.repository.*
 import ru.ds.weather.utils.convertDtoToModel
