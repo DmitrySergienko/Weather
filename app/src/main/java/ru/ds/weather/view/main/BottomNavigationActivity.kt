@@ -40,7 +40,7 @@ class BottomNavigationActivity : AppCompatActivity() {
             }
         }
         //default view
-        binding.bottomNavigationView.selectedItemId = R.id.menu_google_maps
+        binding.bottomNavigationView.selectedItemId = R.id.menu_list_of_city
 
 
     }
